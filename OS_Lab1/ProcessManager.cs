@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace OS_Lab1
 {
     class ProcessManager
     {
         public List<Process> processes_quiue = new List<Process>();
-        public List<Process> done_processes = new List<Process>();
+        public BindingList<Process> done_processes = new BindingList<Process>();
         public Process cur_process = null;
         private ProcessGenerator proc_gen = new ProcessGenerator();
 
@@ -45,6 +47,7 @@ namespace OS_Lab1
                 {
                     if ((cur_process != null) && ((proc.complexity - proc.time_worked) < (cur_process.complexity - cur_process.time_worked)))
                     {
+                        log_text = log_text + " Process " + cur_process.id + " paused.\n";
                         cur_process.pause();
                         cur_process = proc;
                         if (proc.state == 0)
@@ -72,14 +75,14 @@ namespace OS_Lab1
             return log_text;
         }
 
-        public String gen_next(int min_time, int max_time, int max_processes, double chance)
+        public String gen_next(int min_time, int max_time, int tick, Time time, int max_processes, double chance)
         {
             String log_text = ""; 
             Random rand = new Random();
             if (chance * 100 > rand.Next(0, 100)){
                 if (max_processes > (done_processes.Count + processes_quiue.Count))
                 {
-                    processes_quiue.Add(proc_gen.gen_process(min_time, max_time));
+                    processes_quiue.Add(proc_gen.gen_process(min_time, max_time, tick, time));
                     log_text = log_text + " Process " + processes_quiue.Last().id + " added.\n";
                 }
             }

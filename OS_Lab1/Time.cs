@@ -19,11 +19,12 @@ namespace OS_Lab1
             this.msec = 0;
         }
 
-        public Time(int min, int sec, int msec)
+        public Time(int m_sec)
         {
-            this.min = min;
-            this.sec = sec;
-            this.msec = msec;
+            this.msec = m_sec % 1000;
+            int all_sec = (m_sec - this.msec) / 1000;
+            this.sec = all_sec % 60;
+            this.min = (all_sec - this.sec) / 60; 
         }
 
         public Time(Time t)
@@ -43,7 +44,7 @@ namespace OS_Lab1
         public void inc_min()
         {
             min += 1;
-            if (sec >= 60)
+            if (min >= 60)
             {
                 this.reset();
             }
@@ -68,57 +69,44 @@ namespace OS_Lab1
             }
         }
 
-        public string ToString()
+        public override string ToString()
         {
             return min.ToString() + " : " + sec.ToString() + " : " + msec.ToString();
         }
 
-        public int ToInt()
+        public int ToMsec()
         {
-            return min * 60 + sec;
+            return min * 60000 + sec * 1000 + msec;
         }
 
         public static Time operator -(Time t1, Time t2)
         {
-            int msec = t1.msec - t2.msec;
-            int sec = t1.sec - t2.sec;
-            int min = t1.min  - t2.min;
-            if (msec < 0)
-            {
-                msec += 1000;
-                sec--;
-            }
-            if (sec < 0)
-            {
-                sec += 60;
-                min--;
-            }
-            return new Time(min, sec, msec);
+            return new Time(t1.ToMsec() - t2.ToMsec());
+        }
+
+        public static Time operator +(Time t1, Time t2)
+        {
+            return new Time(t1.ToMsec() + t2.ToMsec());
         }
 
         public static Boolean operator <(Time t1, Time t2)
         {
-            return t1.ToInt() < t2.ToInt();
+            return t1.ToMsec() < t2.ToMsec();
         }
 
         public static Boolean operator >(Time t1, Time t2)
         {
-            return t1.ToInt() > t2.ToInt();
+            return t1.ToMsec() > t2.ToMsec();
         }
 
         public static Boolean operator <=(Time t1, Time t2)
         {
-            return t1.ToInt() <= t2.ToInt();
+            return t1.ToMsec() <= t2.ToMsec();
         }
 
         public static Boolean operator >=(Time t1, Time t2)
         {
-            return t1.ToInt() >= t2.ToInt();
-        }
-
-        public static Time parse_sec(int sec)
-        {
-            return new Time((int)Math.Truncate((double)(sec / 60)), (int)Math.Round((double)(sec % 60)), 0);
+            return t1.ToMsec() >= t2.ToMsec();
         }
     }
 }

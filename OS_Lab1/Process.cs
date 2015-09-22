@@ -8,31 +8,29 @@ namespace OS_Lab1
 {
     class Process
     {
-        public int id;
-        public int state;
-        public Time complexity;
-        public Time deleyed;
-        public Time start;
-        public Time time_worked;
-        public Time last_run;
-        public Time finish;
+        public int id { get; set; }
+        public Time complexity { get; set; }
+        public Time start { get; set; }
+        public Time finish { get; set; }
+        public Time time_worked { get; set; }
+        public Time deleyed { get; set; }
 
-        public Process(int id, Time complexity)
+        public int state;
+        
+
+        public Process(int id, Time complexity, Time start)
         {
             this.id = id;
             this.complexity = complexity;
             this.state = 0;
             this.deleyed = new Time();
-            this.start = new Time();
+            this.start = start;
             this.time_worked = new Time();
-            this.last_run = new Time();
             this.finish = new Time();
         }
 
         public void run(Time time)
         {
-            start = time;
-            last_run = start;
             state = 1;
         }
 

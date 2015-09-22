@@ -22,6 +22,14 @@ namespace OS_Lab1
 
         private void startButton_Click(object sender, EventArgs e)
         {
+            manager = new ProcessManager();
+            processBindingSource.DataSource = manager.done_processes;
+            dataGridView1.AutoGenerateColumns = true;
+            dataGridView1.DataSource = processBindingSource;
+
+            timerBox.Text = 0.ToString();
+            logBox.Text = "";
+            cur_time.reset();
             timer.Enabled = true;
             timer.Start();
         }
@@ -29,25 +37,15 @@ namespace OS_Lab1
         private void resetButton_Click(object sender, EventArgs e)
         {
             timer.Stop();
-            logBox.Text = "";
-            manager = new ProcessManager();
-            cur_time.reset();
-            timerBox.Text = 0.ToString();
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
             cur_time.inc_msec(timer.Interval);
             logBox.AppendText(manager.run_next(new Time(cur_time), timer.Interval));
-            logBox.AppendText(manager.gen_next(Int32.Parse(minComp.Text), Int32.Parse(maxComp.Text), Int32.Parse(maxProcesses.Text), 0.1));
+            logBox.AppendText(manager.gen_next(Int32.Parse(minComp.Text), Int32.Parse(maxComp.Text), timer.Interval, cur_time, Int32.Parse(maxProcesses.Text), 0.1));
             if (manager.all_done(Int32.Parse(maxProcesses.Text))){
                 timer.Stop();
-                doneBox.AppendText("================================================\n");
-                foreach (Process p in manager.done_processes)
-                {
-                    doneBox.AppendText("id:  " + p.id + "  ; start:  " + p.start.ToString() + "  ; complexity:  " + 
-                        p.complexity.ToString() + "  ; finish:  " + p.finish.ToString() + "  ; delay:  " + p.deleyed.ToString() + "  ;\n");
-                }
             }
             timerBox.Text = cur_time.ToString();    
         }

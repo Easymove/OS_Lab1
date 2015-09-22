@@ -41,7 +41,19 @@
             this.resetButton = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.logBox = new System.Windows.Forms.TextBox();
-            this.doneBox = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.complexityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deleyedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timeworkedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finishDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.processBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.processBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // startButton
@@ -58,17 +70,17 @@
             // minComp
             // 
             this.minComp.Font = new System.Drawing.Font("Micra", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.minComp.Location = new System.Drawing.Point(12, 347);
+            this.minComp.Location = new System.Drawing.Point(307, 356);
             this.minComp.Name = "minComp";
             this.minComp.Size = new System.Drawing.Size(100, 27);
             this.minComp.TabIndex = 3;
-            this.minComp.Text = "5";
+            this.minComp.Text = "500";
             this.minComp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // maxProcesses
             // 
             this.maxProcesses.Font = new System.Drawing.Font("Micra", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maxProcesses.Location = new System.Drawing.Point(12, 314);
+            this.maxProcesses.Location = new System.Drawing.Point(307, 317);
             this.maxProcesses.Name = "maxProcesses";
             this.maxProcesses.Size = new System.Drawing.Size(100, 27);
             this.maxProcesses.TabIndex = 4;
@@ -79,7 +91,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Micra", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(118, 319);
+            this.label1.Location = new System.Drawing.Point(3, 318);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(262, 21);
             this.label1.TabIndex = 5;
@@ -89,7 +101,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Micra", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(118, 352);
+            this.label2.Location = new System.Drawing.Point(413, 362);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(20, 21);
             this.label2.TabIndex = 6;
@@ -99,7 +111,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Micra", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(250, 352);
+            this.label3.Location = new System.Drawing.Point(3, 362);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(194, 21);
             this.label3.TabIndex = 8;
@@ -108,18 +120,18 @@
             // maxComp
             // 
             this.maxComp.Font = new System.Drawing.Font("Micra", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maxComp.Location = new System.Drawing.Point(144, 347);
+            this.maxComp.Location = new System.Drawing.Point(439, 356);
             this.maxComp.Name = "maxComp";
             this.maxComp.Size = new System.Drawing.Size(100, 27);
             this.maxComp.TabIndex = 7;
-            this.maxComp.Text = "10";
+            this.maxComp.Text = "3000";
             this.maxComp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // timerLabel
             // 
             this.timerLabel.AutoSize = true;
             this.timerLabel.Font = new System.Drawing.Font("Micra", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.timerLabel.Location = new System.Drawing.Point(545, 353);
+            this.timerLabel.Location = new System.Drawing.Point(560, 357);
             this.timerLabel.Name = "timerLabel";
             this.timerLabel.Size = new System.Drawing.Size(82, 21);
             this.timerLabel.TabIndex = 10;
@@ -128,7 +140,7 @@
             // timerBox
             // 
             this.timerBox.Font = new System.Drawing.Font("Micra", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timerBox.Location = new System.Drawing.Point(633, 351);
+            this.timerBox.Location = new System.Drawing.Point(648, 355);
             this.timerBox.Name = "timerBox";
             this.timerBox.ReadOnly = true;
             this.timerBox.Size = new System.Drawing.Size(261, 27);
@@ -140,9 +152,10 @@
             this.resetButton.Font = new System.Drawing.Font("Micra", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resetButton.Location = new System.Drawing.Point(549, 396);
             this.resetButton.Name = "resetButton";
+            this.resetButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.resetButton.Size = new System.Drawing.Size(531, 39);
             this.resetButton.TabIndex = 11;
-            this.resetButton.Text = "Reset";
+            this.resetButton.Text = "Stop";
             this.resetButton.UseVisualStyleBackColor = true;
             this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
@@ -158,20 +171,120 @@
             this.logBox.Size = new System.Drawing.Size(531, 299);
             this.logBox.TabIndex = 12;
             // 
-            // doneBox
+            // dataGridView1
             // 
-            this.doneBox.Location = new System.Drawing.Point(12, 0);
-            this.doneBox.Multiline = true;
-            this.doneBox.Name = "doneBox";
-            this.doneBox.Size = new System.Drawing.Size(531, 299);
-            this.doneBox.TabIndex = 13;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.complexityDataGridViewTextBoxColumn,
+            this.deleyedDataGridViewTextBoxColumn,
+            this.startDataGridViewTextBoxColumn,
+            this.timeworkedDataGridViewTextBoxColumn,
+            this.finishDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.processBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.ShowCellErrors = false;
+            this.dataGridView1.ShowCellToolTips = false;
+            this.dataGridView1.ShowEditingIcon = false;
+            this.dataGridView1.ShowRowErrors = false;
+            this.dataGridView1.Size = new System.Drawing.Size(543, 299);
+            this.dataGridView1.TabIndex = 13;
+            this.dataGridView1.TabStop = false;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // complexityDataGridViewTextBoxColumn
+            // 
+            this.complexityDataGridViewTextBoxColumn.DataPropertyName = "complexity";
+            this.complexityDataGridViewTextBoxColumn.HeaderText = "complexity";
+            this.complexityDataGridViewTextBoxColumn.Name = "complexityDataGridViewTextBoxColumn";
+            this.complexityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // deleyedDataGridViewTextBoxColumn
+            // 
+            this.deleyedDataGridViewTextBoxColumn.DataPropertyName = "deleyed";
+            this.deleyedDataGridViewTextBoxColumn.HeaderText = "deleyed";
+            this.deleyedDataGridViewTextBoxColumn.Name = "deleyedDataGridViewTextBoxColumn";
+            this.deleyedDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // startDataGridViewTextBoxColumn
+            // 
+            this.startDataGridViewTextBoxColumn.DataPropertyName = "start";
+            this.startDataGridViewTextBoxColumn.HeaderText = "start";
+            this.startDataGridViewTextBoxColumn.Name = "startDataGridViewTextBoxColumn";
+            this.startDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // timeworkedDataGridViewTextBoxColumn
+            // 
+            this.timeworkedDataGridViewTextBoxColumn.DataPropertyName = "time_worked";
+            this.timeworkedDataGridViewTextBoxColumn.HeaderText = "time_worked";
+            this.timeworkedDataGridViewTextBoxColumn.Name = "timeworkedDataGridViewTextBoxColumn";
+            this.timeworkedDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // finishDataGridViewTextBoxColumn
+            // 
+            this.finishDataGridViewTextBoxColumn.DataPropertyName = "finish";
+            this.finishDataGridViewTextBoxColumn.HeaderText = "finish";
+            this.finishDataGridViewTextBoxColumn.Name = "finishDataGridViewTextBoxColumn";
+            this.finishDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // processBindingSource
+            // 
+            this.processBindingSource.DataSource = typeof(OS_Lab1.Process);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Micra", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(200, 369);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 13);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "(msec)";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Micra", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(271, 318);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(14, 21);
+            this.label5.TabIndex = 15;
+            this.label5.Text = ":";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Micra", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(271, 361);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(14, 21);
+            this.label6.TabIndex = 16;
+            this.label6.Text = ":";
             // 
             // processApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 461);
-            this.Controls.Add(this.doneBox);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.logBox);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.timerLabel);
@@ -189,6 +302,8 @@
             this.Name = "processApp";
             this.ShowIcon = false;
             this.Text = "Oparation Systems Lab_1";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.processBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,7 +323,17 @@
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.TextBox logBox;
-        private System.Windows.Forms.TextBox doneBox;
+        private System.Windows.Forms.BindingSource processBindingSource;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn complexityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deleyedDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn timeworkedDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finishDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
 
