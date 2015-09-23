@@ -18,56 +18,50 @@ namespace OS_Lab1
         public String run_next(Time time, int tick)
         {
             String log_text = "";
-            if (processes_quiue.Count > 0)
-            {
-                if (cur_process == null)
-                {
-                    cur_process = processes_quiue[0];
-                    log_text = log_text + " Running task " + cur_process.id + " remain work: " + (cur_process.complexity - cur_process.time_worked).ToString() + ";\n";
-                }
 
+            if (cur_process != null){
                 cur_process.running(tick);
-                if (cur_process.complexity <= cur_process.time_worked)
+                if (cur_process.complexity.ToMsec() == cur_process.time_worked.ToMsec())
                 {
+                    log_text = log_text + " Process " + cur_process.id + " done! Time worked: " + cur_process.time_worked.ToString() + ".\n";
                     cur_process.solve(time);
-                    log_text = log_text + "Task " + cur_process.id + " done; time worked: " + cur_process.time_worked.ToString() + ".\n";
                     done_processes.Add(cur_process);
                     processes_quiue.Remove(cur_process);
-                    if (cur_process == null && processes_quiue.Count > 0)
-                    {
-                        cur_process = processes_quiue[0];
-                    }
-                    else {
-                        cur_process = null;
-                        log_text = log_text + " Waiting for tasks.\n";
-                    }
+                    cur_process = null;
+                    return log_text;
                 }
+            }
 
-                foreach (Process proc in this.processes_quiue)
+            if (cur_process == null){
+                if (processes_quiue.Count > 0){
+                    cur_process = processes_quiue[0];
+                }
+            }
+
+            if (processes_quiue.Count > 0)
+            {
+                Process next_proc = processes_quiue.OrderBy((x) => (x.complexity.ToMsec() - x.time_worked.ToMsec())).First();
+                
+                if (cur_process.id != next_proc.id)
                 {
-                    if ((cur_process != null) && ((proc.complexity - proc.time_worked) < (cur_process.complexity - cur_process.time_worked)))
+                    log_text = log_text + " Process " + cur_process.id + " paused.\n";
+                    cur_process.pause();
+                    cur_process = next_proc;
+                    if (next_proc.state == 0)
                     {
-                        log_text = log_text + " Process " + cur_process.id + " paused.\n";
-                        cur_process.pause();
-                        cur_process = proc;
-                        if (proc.state == 0)
+                        next_proc.run(time);
+                        log_text = log_text + " NEXT: new task " + next_proc.id + " remain work: " + (cur_process.complexity - cur_process.time_worked).ToString() + ".\n";
+                    }
+                    else
+                    {
+                        if (next_proc.state == 2)
                         {
-                            proc.run(time);
-                            log_text = log_text + " Running new task " + proc.id + " remain work: " + (cur_process.complexity - cur_process.time_worked).ToString()  + ".\n";
-                            break;
+                            next_proc.resume(time);
+                            log_text = log_text + " NEXT: paused task " + next_proc.id + " remain work: " + (cur_process.complexity - cur_process.time_worked).ToString() + ".\n";
                         }
                         else
                         {
-                            if (proc.state == 2)
-                            {
-                                proc.resume(time);
-                                log_text = log_text + " Resuming paused task " + proc.id + " remain work: " + (cur_process.complexity - cur_process.time_worked).ToString() + ".\n";
-                            }
-                            else
-                            {
-                                log_text = log_text + " Unexpected state detected.\n";
-                            }
-                            break;
+                            log_text = log_text + " Unexpected state detected.\n";
                         }
                     }
                 }

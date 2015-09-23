@@ -42,6 +42,12 @@
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.logBox = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.avDelayBox = new System.Windows.Forms.TextBox();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.complexityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deleyedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,9 +55,6 @@
             this.timeworkedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finishDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.processBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.processBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -124,14 +127,14 @@
             this.maxComp.Name = "maxComp";
             this.maxComp.Size = new System.Drawing.Size(100, 27);
             this.maxComp.TabIndex = 7;
-            this.maxComp.Text = "3000";
+            this.maxComp.Text = "5000";
             this.maxComp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // timerLabel
             // 
             this.timerLabel.AutoSize = true;
             this.timerLabel.Font = new System.Drawing.Font("Micra", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.timerLabel.Location = new System.Drawing.Point(560, 357);
+            this.timerLabel.Location = new System.Drawing.Point(682, 357);
             this.timerLabel.Name = "timerLabel";
             this.timerLabel.Size = new System.Drawing.Size(82, 21);
             this.timerLabel.TabIndex = 10;
@@ -140,7 +143,7 @@
             // timerBox
             // 
             this.timerBox.Font = new System.Drawing.Font("Micra", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timerBox.Location = new System.Drawing.Point(648, 355);
+            this.timerBox.Location = new System.Drawing.Point(766, 355);
             this.timerBox.Name = "timerBox";
             this.timerBox.ReadOnly = true;
             this.timerBox.Size = new System.Drawing.Size(261, 27);
@@ -200,6 +203,62 @@
             this.dataGridView1.TabIndex = 13;
             this.dataGridView1.TabStop = false;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Micra", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(200, 369);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 13);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "(msec)";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Micra", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(271, 318);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(14, 21);
+            this.label5.TabIndex = 15;
+            this.label5.Text = ":";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Micra", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(271, 361);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(14, 21);
+            this.label6.TabIndex = 16;
+            this.label6.Text = ":";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(0, 0);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 17;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Micra", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(560, 324);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(204, 21);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "avrg. delay:";
+            // 
+            // avDelayBox
+            // 
+            this.avDelayBox.Font = new System.Drawing.Font("Micra", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.avDelayBox.Location = new System.Drawing.Point(766, 322);
+            this.avDelayBox.Name = "avDelayBox";
+            this.avDelayBox.ReadOnly = true;
+            this.avDelayBox.Size = new System.Drawing.Size(261, 27);
+            this.avDelayBox.TabIndex = 18;
+            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
@@ -246,41 +305,14 @@
             // 
             this.processBindingSource.DataSource = typeof(OS_Lab1.Process);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Micra", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(200, 369);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 13);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "(msec)";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Micra", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(271, 318);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(14, 21);
-            this.label5.TabIndex = 15;
-            this.label5.Text = ":";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Micra", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(271, 361);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(14, 21);
-            this.label6.TabIndex = 16;
-            this.label6.Text = ":";
-            // 
             // processApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 461);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.avDelayBox);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -334,6 +366,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox avDelayBox;
     }
 }
 
