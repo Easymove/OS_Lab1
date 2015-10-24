@@ -53,7 +53,7 @@ namespace OS_Lab1
         public void solve(Time time)
         {
             finish = time;
-            deleyed = (finish - start) - complexity - new Time(100);
+            deleyed = (finish - start) - complexity;
             state = 3;
         }
     }

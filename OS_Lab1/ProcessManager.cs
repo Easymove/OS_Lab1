@@ -50,6 +50,7 @@ namespace OS_Lab1
                     if (next_proc.state == 0)
                     {
                         next_proc.run(time);
+                        next_proc.running(tick);
                         log_text = log_text + " NEXT: new task " + next_proc.id + " remain work: " + (cur_process.complexity - cur_process.time_worked).ToString() + ".\n";
                     }
                     else
